@@ -8,7 +8,7 @@ import com.demo.saga.core.events.CompleteOrderEvent;
 import com.demo.saga.core.events.OrderCreateEvent;
 import com.demo.saga.core.models.Order;
 import com.demo.saga.order.repository.OrderRepository;
-import org.axonframework.eventhandling.EventHandler;
+//import org.axonframework.eventhandling.EventHandler;
 
 @Component
 public class OrderEventsHandler {
@@ -16,7 +16,7 @@ public class OrderEventsHandler {
     @Autowired
     private OrderRepository orderRepository;
 
-    @EventHandler
+//    @EventHandler
     public void onOrderCreateEvent(OrderCreateEvent event) {
         Order order = orderRepository.findByOrderId(event.getOrderId());
         if(order==null) {

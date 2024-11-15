@@ -74,10 +74,16 @@ public class OrderAggregate {
         orderEventsHandler.onCancelOrderEvent(event);
     }
 
-    @EventSourcingHandler
-    public void on(OrderCreateEvent event) {
-        this.orderId = event.getOrderId();
+//    @EventSourcingHandler
+//    public void on(OrderCreateEvent event) {
+//        this.orderId = event.getOrderId();
 //        orderEventsHandler.onOrderCreateEvent(event);
-        event.setOrderStatus(ServiceTypes.ORDER_STATUS.ORDERED.toString());
+//    }
+
+    @EventSourcingHandler
+    public void on(OrderCreateEvent event, OrderEventsHandler orderEventsHandler) {
+        this.orderId = event.getOrderId();
+        orderEventsHandler.onOrderCreateEvent(event);
+//        event.setOrderStatus(ServiceTypes.ORDER_STATUS.ORDERED.toString());
     }
 }
