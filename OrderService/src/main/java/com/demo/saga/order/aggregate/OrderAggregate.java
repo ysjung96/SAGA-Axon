@@ -1,5 +1,6 @@
 package com.demo.saga.order.aggregate;
 
+import com.demo.saga.core.models.ServiceTypes;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -76,6 +77,7 @@ public class OrderAggregate {
     @EventSourcingHandler
     public void on(OrderCreateEvent event) {
         this.orderId = event.getOrderId();
-        orderEventsHandler.onOrderCreateEvent(event);
+//        orderEventsHandler.onOrderCreateEvent(event);
+        event.setOrderStatus(ServiceTypes.ORDER_STATUS.ORDERED.toString());
     }
 }
